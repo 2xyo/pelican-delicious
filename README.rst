@@ -6,6 +6,13 @@ Pelican Delicious bookmarks
     :target: https://travis-ci.org/2xyo/pelican-delicious
 .. image:: https://coveralls.io/repos/2xyo/pelican-delicious/badge.png?branch=master 
     :target: https://coveralls.io/r/2xyo/pelican-delicious?branch=master
+.. image:: https://pypip.in/d/pelican-delicious/badge.png
+        :target: https://crate.io/packages/pelican-delicious
+.. image:: https://pypip.in/v/pelican-delicious/badge.png
+        :target: https://crate.io/packages/pelican-delicious
+.. image:: https://badge.waffle.io/2xyo/pelican-delicious.png?label=ready)
+        :target: https://waffle.io/2xyo/pelican-delicious
+
 
 Pelican Delicious Bookmarks is a library to make it easy to add your Delicious bookmarks in your Pelican_ blogs.
 
