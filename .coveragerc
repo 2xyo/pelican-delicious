@@ -1,0 +1,13 @@
+[report]
+omit =
+    */python?.?/*
+    */site-packages/nose/*
+
+include =
+	*pelican_delicious*
+
+[paths]
+source =
+	pelican_delicious
+
+

@@ -1,5 +1,11 @@
+===========================
 Pelican Delicious bookmarks
 ===========================
+
+.. image:: https://travis-ci.org/2xyo/pelican-delicious.png?branch=master
+    :target: https://travis-ci.org/2xyo/pelican-delicious
+.. image:: https://coveralls.io/repos/2xyo/pelican-delicious/badge.png?branch=master 
+    :target: https://coveralls.io/r/2xyo/pelican-delicious?branch=master
 
 Pelican Delicious Bookmarks is a library to make it easy to add your Delicious bookmarks in your Pelican_ blogs.
 
