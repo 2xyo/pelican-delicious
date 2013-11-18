@@ -36,21 +36,22 @@ delicious_template = """<div class="delicious">
 
 class Bookmark(object):
 
-    __slots__ = ["title", "description", "href", "tag"]
-
     def __init__(self, post):
         try:
             self.title = post['description']
         except KeyError:
             self.title = None
+
         try:
             self.description = post['extended']
         except KeyError:
             self.description = None
+
         try:
             self.href = post['href']
         except KeyError:
             self.href = None
+
         try:
             self.tags = set(post['tag'].split())
         except KeyError:
