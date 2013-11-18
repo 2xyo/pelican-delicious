@@ -1,0 +1,24 @@
+# -*- coding: utf-8 -*-
+
+import unittest
+from plugin import *
+
+
+class TestBookmark(unittest.TestCase):
+
+    def test_title(self):
+        self.assertEquals(Bookmark({"description": "desc"}).title, "desc")
+        self.assertIsNone(Bookmark({}).title)
+
+    def test_description(self):
+        self.assertEquals(Bookmark({"extended": "ext"}).description, "ext")
+        self.assertIsNone(Bookmark({}).title)
+
+    def test_href(self):
+        self.assertEquals(Bookmark({"href": "url"}).href, "url")
+        self.assertIsNone(Bookmark({}).title)
+
+    def test_tags(self):
+        self.assertEquals(
+            Bookmark({"tag": "tag1 tag2"}).tags, set(["tag1", "tag2"]))
+        self.assertEquals(Bookmark({}).tags, set())
