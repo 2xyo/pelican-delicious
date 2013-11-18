@@ -34,7 +34,7 @@ delicious_template = """<div class="delicious">
 </div>"""
 
 
-class Bookmark():
+class Bookmark(object):
 
     __slots__ = ["title", "description", "href", "tag"]
 

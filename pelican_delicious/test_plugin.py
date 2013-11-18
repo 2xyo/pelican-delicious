@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from plugin import *
+from .plugin import *
 
 
 class TestBookmark(unittest.TestCase):
