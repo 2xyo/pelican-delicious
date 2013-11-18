@@ -41,7 +41,7 @@ setup(
     package_dir={'pelican_delicious': 'pelican_delicious'},
     include_package_data=True,
     install_requires=requires,
-    setup_requires=['nose>=1.0']
+    setup_requires=['nose>=1.0'],
     license='BSD',
     classifiers=(
         'Development Status :: 1 - Beta',
