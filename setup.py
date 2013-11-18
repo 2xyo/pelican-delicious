@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import with_statement
+
 import os
 import sys
 
@@ -9,7 +11,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-import pelican_delicious
 
 
 if sys.argv[-1] == 'publish':
@@ -30,7 +31,7 @@ requires = [
 
 setup(
     name='pelican-delicious',
-    version=pelican_delicious.__version__,
+    version='0.0.1',
     description='Easily embed delicious bookmarks in your Pelican articles.',
     long_description=readme,
     author='Yohann Lepage',
@@ -44,7 +45,7 @@ setup(
     setup_requires=['nose>=1.0'],
     license='BSD',
     classifiers=(
-        'Development Status :: 1 - Beta',
+        'Development Status :: 1 - Alpha',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
