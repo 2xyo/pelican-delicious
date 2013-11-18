@@ -8,15 +8,15 @@ class TestBookmark(unittest.TestCase):
 
     def test_title(self):
         self.assertEquals(Bookmark({"description": "desc"}).title, "desc")
-        self.assertIsNone(Bookmark({}).title)
+        self.assertEquals(Bookmark({}).title, None)
 
     def test_description(self):
         self.assertEquals(Bookmark({"extended": "ext"}).description, "ext")
-        self.assertIsNone(Bookmark({}).title)
+        self.assertEquals(Bookmark({}).title, None)
 
     def test_href(self):
         self.assertEquals(Bookmark({"href": "url"}).href, "url")
-        self.assertIsNone(Bookmark({}).title)
+        self.assertEquals(Bookmark({}).title, None)
 
     def test_tags(self):
         self.assertEquals(
