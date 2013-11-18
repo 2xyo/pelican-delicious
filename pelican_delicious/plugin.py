@@ -9,7 +9,6 @@ This plugin allows you to embed `Delicious`_ bookmarks into your posts.
 
 """
 import logging
-import hashlib
 import os
 import re
 import requests

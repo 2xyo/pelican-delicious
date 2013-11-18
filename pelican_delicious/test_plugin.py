@@ -22,3 +22,15 @@ class TestBookmark(unittest.TestCase):
         self.assertEquals(
             Bookmark({"tag": "tag1 tag2"}).tags, set(["tag1", "tag2"]))
         self.assertEquals(Bookmark({}).tags, set())
+
+
+class TestDelicious(unittest.TestCase):
+
+    def test_fetch_delicious(self):
+        pass
+
+    def test_setup_delicious(self):
+        pass
+
+    def test_replace_delicious_tags(self):
+        pass
