@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 delicious_regex = re.compile(r'\[delicious ([\s0-9a-zA-Z]+)\]')
 
-delicious_template = """<div class="delicious">
+delicious_default_template = """<div class="delicious">
 {% for bookmark in bookmarks %}
     <dl>
         <dt>Title</dt>
@@ -74,14 +74,18 @@ def setup_delicious(pelican):
 
     delicious_username = pelican.settings.get('DELICIOUS_USERNAME')
     delicious_password = pelican.settings.get('DELICIOUS_PASSWORD')
-    pelican.settings['DELICIOUS_BOOKMARKS'] = fetch_delicious(
-        delicious_username, delicious_password)
+
+    pelican.settings['DELICIOUS_TEMPLATE'] = \
+        pelican.settings.get('DELICIOUS_TEMPLATE', delicious_default_template)
+
+    pelican.settings['DELICIOUS_BOOKMARKS'] = \
+        fetch_delicious(delicious_username, delicious_password)
 
 
 def replace_delicious_tags(generator):
     """Replace delicious tags in the article content."""
     from jinja2 import Template
-    template = Template(delicious_template)
+    template = Template(generator.context.get('DELICIOUS_TEMPLATE'))
 
     for page in generator.pages:
         for match in delicious_regex.findall(page._content):
