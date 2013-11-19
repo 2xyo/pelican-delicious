@@ -2,27 +2,16 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import with_statement
-
 import os
-import sys
+from setuptools import setup, find_packages
 
 try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
-
-
-
-if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload')
-    sys.exit()
-
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as f:
-    readme = f.read()
-
-packages = [
-    'pelican_delicious',
-]
+    here = os.path.abspath(os.path.normpath(os.path.dirname(__file__)))
+    readme = open(os.path.join(here, 'README.rst')).read()
+except:
+    readme = """\
+Pelican Delicious Bookmarks is a library to make it easy to add your
+Delicious bookmarks in your Pelican blogs. """
 
 requires = [
     'requests',
@@ -37,18 +26,19 @@ setup(
     author='Yohann Lepage',
     author_email='yohann@lepage.info',
     url='https://github.com/2xyo/pelican-delicious',
-    packages=packages,
+    packages=find_packages(),
     package_data={'': ['LICENSE', ]},
     package_dir={'pelican_delicious': 'pelican_delicious'},
     include_package_data=True,
     install_requires=requires,
-    setup_requires=['nose>=1.0'],
+    tests_require=['nose>=1.0'],
+    test_suite='nose.collector',
     license='BSD',
     classifiers=(
         'Development Status :: 2 - Pre-Alpha',
         'Environment :: Console',
         'Intended Audience :: Developers',
-        'License :: BEER-WARE',
+        'License :: Freely Distributable',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
