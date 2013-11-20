@@ -18,6 +18,8 @@ develop-eggs
 lib
 lib64
 __pycache__
+output
+src
 
 # Installer logs
 pip-log.txt
@@ -26,6 +28,7 @@ pip-log.txt
 .coverage
 .tox
 nosetests.xml
+.coveralls.yml
 
 # Translations
 *.mo
