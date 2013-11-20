@@ -91,7 +91,7 @@ def fetch_delicious(delicious_username, delicious_password):
         logger.error("No bookmarks downloaded")
         return set()
 
-    return {Bookmark(p) for p in body.posts if isinstance(p, Tag)}
+    return set(Bookmark(p) for p in body.posts if isinstance(p, Tag))
 
 
 def setup_delicious(pelican):
