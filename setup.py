@@ -30,7 +30,7 @@ setup(
     package_data={'': ['LICENSE', ]},
     package_dir={'pelican_delicious': 'pelican_delicious'},
     install_requires=requires,
-    tests_require=['nose>=1.0', 'mock', 'httmock', 'testfixtures'],
+    tests_require=['nose>=1.0', 'mock', 'httmock', 'testfixtures', 'nose-cov'],
     test_suite='nose.collector',
     license='BSD',
     classifiers=(

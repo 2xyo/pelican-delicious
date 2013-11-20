@@ -6,7 +6,7 @@ omit =
     */__init__.py
 
 include =
-	*pelican_delicious*
+	*/pelican_delicious/*
 
 [paths]
 source =
