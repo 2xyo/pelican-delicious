@@ -8,11 +8,14 @@ This plugin allows you to embed `Delicious`_ bookmarks into your posts.
 .. Delicious: https://delicious.com/
 
 """
+from __future__ import unicode_literals
+
 import logging
 import os
 import re
 import requests
 from bs4 import BeautifulSoup
+from bs4.element import Tag
 
 logger = logging.getLogger(__name__)
 
@@ -36,26 +39,40 @@ delicious_default_template = """<div class="delicious">
 
 class Bookmark(object):
 
-    def __init__(self, post):
+    def __init__(self, post=None):
         try:
             self.title = post['description']
-        except KeyError:
+        except (KeyError, TypeError):
             self.title = None
 
         try:
             self.description = post['extended']
-        except KeyError:
+        except (KeyError, TypeError):
             self.description = None
 
         try:
             self.href = post['href']
-        except KeyError:
+        except (KeyError, TypeError):
             self.href = None
 
         try:
             self.tags = set(post['tag'].split())
-        except KeyError:
+        except (KeyError, TypeError):
             self.tags = set()
+
+    def __repr__(self):
+        return "{0.title} - {0.href} - {0.tags}".format(self)
+
+    def __eq__(self, other):
+        return  str(self) == str(other)
+
+    def __cmp__(self, other):
+        return self.href - other.href
+
+    def __hash__(self):
+        return (hash(self.title) ^
+                hash(self.description) ^
+                hash(self.href))
 
 delicious_bookmarks = None
 
@@ -65,8 +82,16 @@ def fetch_delicious(delicious_username, delicious_password):
     r = requests.get('https://api.delicious.com/v1/posts/all?&results=100000',
                      auth=(delicious_username, delicious_password))
 
-    body = BeautifulSoup(r.content)
-    return [Bookmark(p) for p in body.posts]
+    if r.status_code == 401:
+        logger.error("Wrong Delicious credentials")
+        return set()
+
+    body = BeautifulSoup(r.text)
+    if body.posts is None:
+        logger.error("No bookmarks downloaded")
+        return set()
+
+    return {Bookmark(p) for p in body.posts if isinstance(p, Tag)}
 
 
 def setup_delicious(pelican):
