@@ -2,6 +2,8 @@
 omit =
     */python?.?/*
     */site-packages/nose/*
+    */test_plugin.py
+    */__init__.py
 
 include =
 	*pelican_delicious*
