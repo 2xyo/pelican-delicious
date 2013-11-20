@@ -7,11 +7,11 @@ python:
   - pypy
 
 install:
-  - pip install .
-  - pip install coveralls nose-cov --use-mirrors
+  - python setup.py install
+  - pip install coveralls nose-cov
 
 script:
-  - nosetests --with-coverage
+  - python setup.py test
 
 after_success:
   - coveralls
