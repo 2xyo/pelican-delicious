@@ -19,7 +19,7 @@ from bs4.element import Tag
 
 logger = logging.getLogger(__name__)
 
-delicious_regex = re.compile(r'\[delicious ([\s0-9a-zA-Z]+)\]')
+delicious_regex = re.compile(r'\[delicious ([\s\w\d\-]+)\]', re.UNICODE)
 
 delicious_default_template = """<div class="delicious">
 {% for bookmark in bookmarks %}

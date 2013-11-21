@@ -83,8 +83,16 @@ shared="yes" tag="tag1 tag2" time="2013-09-21T14:05:23Z"/></posts>"""}
 
             self.assertEqual(bookmarks, set([b1, b2]))
 
-    def test_setup_delicious(self):
-        pass
+    def test_regex(self):
+
+        tests = {"None": [],
+                 "a [delicious a b c] z": ["a b c"],
+                 "a [delicious a b c] [delicious d e f] z": ["a b c", "d e f"],
+                 "a [delicious 8-ƃʇn sı sıɥʇ]": ["8-ƃʇn sı sıɥʇ"]}
+
+        for s, e in tests.items():
+            match = [m for m in delicious_regex.findall(s)]
+            self.assertEqual(match, e)
 
     def test_replace_delicious_tags(self):
         pass
