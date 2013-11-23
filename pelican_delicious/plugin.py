@@ -25,11 +25,9 @@ delicious_default_template = """<div class="delicious">
 {% for bookmark in bookmarks %}
     <dl>
         <dt>Title</dt>
-        <dd>{{ bookmark.title }}</dd>
-        {% if bookmark.description %}
+        <dd>{{ bookmark.title }}</dd>{% if bookmark.description %}
         <dt>Description</dt>
-        <dd>{{ bookmark.description }}</dd>
-        {% endif %}
+        <dd>{{ bookmark.description }}</dd>{% endif %}
         <dt>URL</dt>
         <dd><a href="{{ bookmark.href }}">{{ bookmark.href }}</a></dd>
     </dl>
@@ -64,10 +62,13 @@ class Bookmark(object):
         return "{0.title} - {0.href} - {0.tags}".format(self)
 
     def __eq__(self, other):
-        return  str(self) == str(other)
+        return str(self) == str(other)
+
+    def __lt__(self, other):
+        return self.title > other.title
 
     def __cmp__(self, other):
-        return self.href - other.href
+        return self.title < other.title
 
     def __hash__(self):
         return (hash(self.title) ^
@@ -114,9 +115,9 @@ def replace_delicious_tags(generator):
 
     for page in generator.pages:
         for match in delicious_regex.findall(page._content):
-            bookmarks = [bookmark for bookmark
-                         in generator.context.get('DELICIOUS_BOOKMARKS')
-                         if set(match.split()).issubset(bookmark.tags)]
+            bookmarks = sorted([bookmark for bookmark
+                                in generator.context.get('DELICIOUS_BOOKMARKS')
+                                if set(match.split()).issubset(bookmark.tags)])
 
             # Create a context to render with
             context = generator.context.copy()
@@ -124,7 +125,8 @@ def replace_delicious_tags(generator):
 
             replacement = template.render(context)
 
-            page._content = page._content.replace(match[0], replacement)
+            page._content = page._content.replace(
+                "[delicious " + match + "]", replacement)
 
 
 def register():

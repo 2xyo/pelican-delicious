@@ -14,6 +14,7 @@ Pelican Delicious Bookmarks is a library to make it easy to add your
 Delicious bookmarks in your Pelican blogs. """
 
 requires = [
+    'pelican',
     'requests',
     'beautifulsoup4'
 ]
