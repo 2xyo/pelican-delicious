@@ -4,15 +4,22 @@ Pelican Delicious bookmarks
 
 .. image:: https://travis-ci.org/2xyo/pelican-delicious.png?branch=master
     :target: https://travis-ci.org/2xyo/pelican-delicious
+    :alt: Travis CI - Continuous Integration
 .. image:: https://coveralls.io/repos/2xyo/pelican-delicious/badge.png?branch=master
     :target: https://coveralls.io/r/2xyo/pelican-delicious?branch=master
+    :alt: Coveralls - code coverage
 .. image:: https://pypip.in/d/pelican-delicious/badge.png
-        :target: https://crate.io/packages/pelican-delicious
+    :target: https://crate.io/packages/pelican-delicious
+    :alt: Crate - Download
 .. image:: https://pypip.in/v/pelican-delicious/badge.png
-        :target: https://crate.io/packages/pelican-delicious
+    :target: https://crate.io/packages/pelican-delicious
+    :alt: Crate - Pypi version
+.. image:: https://requires.io/github/2xyo/pelican-delicious/requirements.png?branch=master
+    :target: https://requires.io/github/2xyo/pelican-delicious/requirements/?branch=master
+    :alt: Requires - Requirements Status
 .. image:: https://badge.waffle.io/2xyo/pelican-delicious.png?label=ready
-        :target: https://waffle.io/2xyo/pelican-delicious
-
+    :target: https://waffle.io/2xyo/pelican-delicious
+    :alt: Waffle - workflow
 
 Pelican Delicious Bookmarks is a library to make it easy to add your Delicious bookmarks in your Pelican_ blogs.
 
