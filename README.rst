@@ -32,15 +32,25 @@ To install pelican-delicious, simply:
 
     $ pip install pelican-delicious
 
+or :
+
+.. code-block:: bash
+
+    $ git clone 
+
+
 Then add a bit of code to your blog configuration:
 
 .. code-block:: python
 
+    PLUGIN_PATHS = [
+        '/<path>/pelican-plugins',
+        '/<path>/pelican-delicious',
+        # '...']
+
     PLUGINS = [
-        # ...
-        'pelican_delicious',
-        # ...
-    ]
+        # '...',
+        'pelican_delicious']
 
 Usage
 -----
@@ -58,7 +68,7 @@ This will tell the plugin to insert links withs tag1 and tag2 into your post. Th
     <div class ="delicious">
         <dl>
             <dt>Title</dt>
-            <dd>The Titile of the link</dd>
+            <dd>The Title of the link</dd>
 
             <dt>Description</dt>
             <dd>The Description</dd>
